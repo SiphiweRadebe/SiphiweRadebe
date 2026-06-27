@@ -5,7 +5,7 @@
 ██╔════╝██║██╔══██╗██║  ██║██║██║    ██║██╔════╝
 ███████╗██║██████╔╝███████║██║██║ █╗ ██║█████╗  
 ╚════██║██║██╔═══╝ ██╔══██║██║██║███╗██║██╔══╝  
-███████║██║██║     ██║  ██║██║╚███╔███╔╝███████╗
+███████║██║██║     ██║  ██║██║╚███╔███╔╝███████║
 ╚══════╝╚═╝╚═╝     ╚═╝  ╚═╝╚═╝ ╚══╝╚══╝ ╚══════╝
 ```
 
@@ -48,64 +48,79 @@ $ cat skills.txt
 ---
 
 ```bash
-$ git log --author="SiphiweRadebe" --oneline --stat
+$ metrics --user SiphiweRadebe --section overview
 ```
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=SiphiweRadebe&show_icons=true&theme=dark&hide_border=true&count_private=true&include_all_commits=true&bg_color=0d1117&title_color=00ff41&icon_color=00ff41&text_color=c9d1d9&ring_color=00ff41" height="165" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=SiphiweRadebe&layout=compact&theme=dark&hide_border=true&bg_color=0d1117&title_color=00ff41&text_color=c9d1d9&langs_count=8" height="165" />
-</p>
-
-```bash
-$ streak --user SiphiweRadebe
-```
-
-<p align="center">
-  <img src="https://streak-stats.demolab.com?user=SiphiweRadebe&theme=dark&hide_border=true&background=0d1117&ring=00ff41&fire=00ff41&currStreakLabel=00ff41&sideLabels=00ff41&dates=c9d1d9&stroke=00ff41" />
-</p>
-
-```bash
-$ git log --graph --all --pretty=format:'%h %s'
-```
-
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=SiphiweRadebe&theme=react-dark&bg_color=0d1117&color=00ff41&line=00ff41&point=ffffff&area=true&hide_border=true&area_color=00ff41" />
+  <img src="metrics.header.svg" alt="Profile Overview" />
 </p>
 
 ---
 
 ```bash
-$ ls -la ~/projects
+$ git log --graph --all --format='%C(auto)%h %s'
 ```
 
-<!-- Row 1 -->
 <p align="center">
-  <a href="https://github.com/SiphiweRadebe/veil">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=SiphiweRadebe&repo=veil&theme=dark&hide_border=true&bg_color=0d1117&title_color=00ff41&text_color=c9d1d9&icon_color=00ff41" />
-  </a>
-  <a href="https://github.com/SiphiweRadebe/terrainiq">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=SiphiweRadebe&repo=terrainiq&theme=dark&hide_border=true&bg_color=0d1117&title_color=00ff41&text_color=c9d1d9&icon_color=00ff41" />
-  </a>
+  <img src="metrics.isocalendar.svg" alt="Isometric Contribution Calendar" />
 </p>
 
-<!-- Row 2 -->
+---
+
+```bash
+$ cloc --by-lang ~/projects/**
+```
+
 <p align="center">
-  <a href="https://github.com/SiphiweRadebe/AzureADUserManager">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=SiphiweRadebe&repo=AzureADUserManager&theme=dark&hide_border=true&bg_color=0d1117&title_color=00ff41&text_color=c9d1d9&icon_color=00ff41" />
-  </a>
-  <a href="https://github.com/SiphiweRadebe/Environment-Drift">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=SiphiweRadebe&repo=Environment-Drift&theme=dark&hide_border=true&bg_color=0d1117&title_color=00ff41&text_color=c9d1d9&icon_color=00ff41" />
-  </a>
+  <img src="metrics.languages.svg" alt="Most Used Languages" />
 </p>
 
-<!-- Row 3 -->
+---
+
+```bash
+$ cat ~/.commit_patterns
+```
+
 <p align="center">
-  <a href="https://github.com/SiphiweRadebe/Hackathon_AI_Health">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=SiphiweRadebe&repo=Hackathon_AI_Health&theme=dark&hide_border=true&bg_color=0d1117&title_color=00ff41&text_color=c9d1d9&icon_color=00ff41" />
-  </a>
-  <a href="https://github.com/SiphiweRadebe/SeleniumPractice">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=SiphiweRadebe&repo=SeleniumPractice&theme=dark&hide_border=true&bg_color=0d1117&title_color=00ff41&text_color=c9d1d9&icon_color=00ff41" />
-  </a>
+  <img src="metrics.habits.svg" alt="Coding Habits" />
+</p>
+
+---
+
+```bash
+$ ls ~/projects
+```
+
+<p align="center">
+  <img src="metrics.repositories.svg" alt="Repository Activity" />
+</p>
+
+```bash
+$ git log --author="SiphiweRadebe" --oneline -10
+```
+
+<p align="center">
+  <img src="metrics.activity.svg" alt="Recent Activity" />
+</p>
+
+---
+
+```bash
+$ ls ~/.github/topics/
+```
+
+<p align="center">
+  <img src="metrics.topics.svg" alt="Starred Topics" />
+</p>
+
+---
+
+```bash
+$ cat ~/.github/achievements
+```
+
+<p align="center">
+  <img src="metrics.achievements.svg" alt="Achievements" />
 </p>
 
 ---
@@ -129,7 +144,7 @@ $ curl -s https://linkedin.com/in/siphiwe-radebe-8063b41ba
 ---
 
 <p align="center">
-  <img src="https://img.shields.io/badge/console-exit_0-00ff41?style=flat-square&labelColor=0d1117" />
+  <img src="https://img.shields.io/badge/auto--updated-daily_via_GitHub_Actions-00ff41?style=flat-square&labelColor=0d1117" />
 </p>
 
 ```bash
