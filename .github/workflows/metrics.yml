@@ -19,6 +19,12 @@ jobs:
     steps:
 
       # ─────────────────────────────────────────────
+      # Setup: Check out the repository
+      # ─────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ─────────────────────────────────────────────
       # SECTION 1: Header block — profile overview
       # Base stats: repos, commits, PRs, issues, stars
       # ─────────────────────────────────────────────
