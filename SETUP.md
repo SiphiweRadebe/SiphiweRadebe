@@ -1,112 +1,45 @@
-# SETUP.md — Getting lowlighter/metrics running on your profile
+# Fix your GitHub profile metrics
 
-## What this gives you
+Repository: `https://github.com/SiphiweRadebe/SiphiweRadebe`
 
-Eight auto-generated SVG panels committed to your profile repo daily:
+## What changed
 
-| File | What it shows |
-|---|---|
-| `metrics.header.svg` | Profile overview — repos, commits, PRs, stars |
-| `metrics.isocalendar.svg` | 3D isometric contribution calendar (full year) |
-| `metrics.languages.svg` | Language breakdown across all repos |
-| `metrics.habits.svg` | Commit time heatmap + day distribution |
-| `metrics.repositories.svg` | Featured repo cards with live stats |
-| `metrics.activity.svg` | Recent commits, PRs, releases feed |
-| `metrics.topics.svg` | Your starred GitHub topic badges |
-| `metrics.achievements.svg` | GitHub achievement badges |
+- Uses a dedicated classic personal access token (`METRICS_TOKEN`) for GitHub-account metrics instead of the limited workflow `GITHUB_TOKEN`.
+- Fixes invalid coding-habits chart type (`bar` → `classic`).
+- Replaces two publicly inaccessible repository names with four verified public repositories.
+- Includes `push` events in recent activity and looks back 90 days.
+- Changes Metrics to `output_action: none` and commits all six validated images in a single push, using GitHub Actions' default `GITHUB_TOKEN`.
+- Stops publishing if a generated SVG is missing, malformed, or contains an `Unexpected error` message.
+- Removes empty starred-topics and flaky achievements panels from the README. Links to the native GitHub profile for achievements instead.
 
----
+## Step 1 — Set up the token securely
 
-## Step 1 — Create your profile repository (if not done)
+Open `https://github.com/settings/tokens/new` and create a **classic** personal access token for Metrics. Use the **fewest scopes necessary**. For public repositories, start with no scopes; only grant other permissions if a specific desired feature demonstrably requires them. **Do not grant broad `repo` access just to show company/private work.** Follow employer policies for workplace repositories. Set an expiry and rotate the token as necessary.
 
-Your profile README lives in a repo named exactly the same as your username:
+Save it in the profile repository under **Settings → Secrets and variables → Actions → New repository secret**, with name **`METRICS_TOKEN`**. Never put the token in README files, workflow source, or chat messages.
 
-```
-github.com/SiphiweRadebe/SiphiweRadebe
-```
+For this Metrics action, a classic token is the upstream documented option. Do not confuse the data-access token with `GITHUB_TOKEN` used to commit the generated images.
 
-If it doesn't exist, create it at https://github.com/new
-- Name: `SiphiweRadebe`
-- Make it public
-- Tick "Add a README file"
+## Step 2 — Update the two repository files
 
----
+Copy this package's `README.md` to the root of your profile repository.
 
-## Step 2 — Generate a Personal Access Token (classic)
+Copy `.github/workflows/metrics.yml` to the same path in your profile repository, replacing the old workflow.
 
-> ⚠️ Fine-grained tokens are NOT supported — you must use a classic token.
+You can leave the old `metrics.topics.svg` and `metrics.achievements.svg` in the repository or delete them after you are happy with the new profile. The revised README no longer displays them.
 
-1. Go to: https://github.com/settings/tokens/new
-2. Note (name): `METRICS_TOKEN`
-3. Expiration: No expiration (or 1 year)
-4. Scopes to tick:
-   - ✅ `repo` — full repo access (needed for private repo stats)
-   - ✅ `read:user` — read user profile
-   - ✅ `read:org` — read org membership
-5. Click **Generate token** and copy it immediately
+## Step 3 — Run and verify
 
----
+Open `https://github.com/SiphiweRadebe/SiphiweRadebe/actions/workflows/metrics.yml`, select **Run workflow**, then inspect each step's log.
 
-## Step 3 — Add the token as a repository secret
+The workflow should generate six SVG files, validate them, and commit changes once to `main`.
 
-1. Go to your profile repo: `github.com/SiphiweRadebe/SiphiweRadebe`
-2. Settings → Secrets and variables → Actions → **New repository secret**
-3. Name: `METRICS_TOKEN`
-4. Secret: paste the token you copied
-5. Click **Add secret**
+If it fails, check the failing step. Don't disable `plugins_errors_fatal` to hide plugin failures—fix the failing plugin or temporarily remove that panel and its README reference.
 
----
+### What still may legitimately be empty
 
-## Step 4 — Add the workflow file
+- Recent activity only reflects activity accessible to the token and the plugin's upstream API. Employer/private repository activity is often not shown.
+- Coding habits are based on recent observable events, not all your historical commits.
+- Some metrics may depend on an upstream service and cannot be guaranteed before the workflow runs in your GitHub account.
 
-Create this file in your profile repo:
-
-```
-.github/workflows/metrics.yml
-```
-
-Paste the contents of the `metrics.yml` file provided.
-
----
-
-## Step 5 — Add the README
-
-Replace your profile repo's `README.md` with the provided one.
-
----
-
-## Step 6 — Run it for the first time
-
-1. Go to your profile repo on GitHub
-2. Click the **Actions** tab
-3. Click **Metrics** in the left sidebar
-4. Click **Run workflow** → **Run workflow**
-
-The workflow will take ~5–10 minutes on first run. When it finishes,
-you'll see the `.svg` files committed to your repo root, and the README
-will display them automatically.
-
-After that it runs automatically every day at midnight UTC.
-
----
-
-## Optional: Enable private contribution counting
-
-In your GitHub profile settings:
-Settings → Contributions → tick **"Include private contributions on my profile"**
-
-This makes the isometric calendar and stats count commits to private repos too.
-
----
-
-## Troubleshooting
-
-**SVG shows "not found"** — the workflow hasn't run yet, or failed. Check the Actions tab.
-
-**Token error in logs** — make sure you used a *classic* PAT, not fine-grained.
-
-**Workflow never commits** — check repo Actions permissions:
-Settings → Actions → General → Workflow permissions → set to **Read and write permissions**
-
-**Want to add more panels?** — browse plugins at:
-https://github.com/lowlighter/metrics#-plugins
+Docs: `https://github.com/lowlighter/metrics`
